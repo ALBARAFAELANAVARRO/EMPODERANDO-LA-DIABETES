@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empoderando la Diabetes</title>
+<style>
+body{font-family:Arial,sans-serif;background:#e8f5ff;margin:0;padding:20px;color:#333}
+h1{text-align:center;color:#0b6fa4;font-size:24px}
+.card{background:white;padding:20px;border-radius:15px;box-shadow:0 2px 10px #ddd;max-width:400px;margin:auto}
+input,select,button{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #ccc;font-size:16px}
+button{background:#0b6fa4;color:white;border:none;font-weight:bold}
+.item{background:#e6f7ff;padding:10px;border-radius:10px;margin-top:10px}
+</style>
+</head>
+<body>
+<h1>💙 Empoderando la Diabetes</h1>
+<div class="card">
+<label>Glucosa (mg/dL)</label>
+<input id="glucosa" type="number" placeholder="Ej: 110">
+<label>Momento</label>
+<select id="momento">
+<option>En ayunas</option>
+<option>Antes de comer</option>
+<option>Después de comer</option>
+<option>Antes de dormir</option>
+</select>
+<label>Nota</label>
+<input id="nota" type="text" placeholder="Ej: Me sentí con energía">
+<button onclick="guardar()">Guardar Registro</button>
+<div id="lista"></div>
+</div>
+
+<script>
+function guardar(){
+let g=document.getElementById('glucosa').value;
+let m=document.getElementById('momento').value;
+let n=document.getElementById('nota').value;
+if(!g){alert('Pon tu glucosa');return;}
+let datos=JSON.parse(localStorage.getItem('dulce')||'[]');
+datos.unshift({g,m,n,fecha:new Date().toLocaleString()});
+localStorage.setItem('dulce',JSON.stringify(datos));
+mostrar();
+document.getElementById('glucosa').value='';
+}
+function mostrar(){
+let datos=JSON.parse(localStorage.getItem('dulce')||'[]');
+let html='';
+datos.forEach(d=>{
+let color=d.g>180?'#ff6b6b':d.g<70?'#ffa94d':'#51cf66';
+html+=`<div class="item"><b style="color:${color};font-size:20px">${d.g} mg/dL</b><br>${d.m} - ${d.n}<br><small>${d.fecha}</small></div>`;
+});
+document.getElementById('lista').innerHTML=html;
+}
+mostrar();
+</script>
+</body>
+</html>

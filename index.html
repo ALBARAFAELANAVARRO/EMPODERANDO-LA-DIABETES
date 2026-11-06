@@ -5,10 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Empoderando la Diabetes</title>
 <style>
-body{font-family:Arial,sans-serif;background:#eaf6ff;margin:0 auto;padding:15px;color:#333;max-width:800px;}header{background:#0077b6;color:white;text-align:center;padding:25px 15px}
+body{font-family:Arial,sans-serif;background:#eaf6ff;margin:0;padding:0;color:#333}
+header{background:#0077b6;color:white;text-align:center;padding:25px 15px}
 header h1{margin:5px 0;font-size:28px}
 header p{margin:0;font-size:16px}
-<img src="https://albarafaelanavarro.github.io/EMPODERANDO-LA-DIABETES/foto.jpg" style="width:160px; height:160px; border-radius:50%; object-fit:cover; display:block; margin:10px auto;">button{background:#0077b6;color:white;border:none;padding:13px;width:100%;border-radius:10px;font-size:18px;font-weight:bold}
+.container{max-width:650px;margin:auto;padding:15px}
+.card{background:white;border-radius:15px;padding:18px;margin-bottom:18px;box-shadow:0 3px 10px rgba(0,0,0,0.08)}
+input,select{width:100%;padding:12px;margin:8px 0 14px 0;border:1px solid #ccc;border-radius:10px;font-size:16px;box-sizing:border-box}
+button{background:#0077b6;color:white;border:none;padding:13px;width:100%;border-radius:10px;font-size:18px;font-weight:bold}
 h2{color:#0077b6;margin-top:0}
 .receta{background:#f0f9ff;padding:12px;border-radius:10px;margin-bottom:10px}
 .tip{background:#fff8e1;padding:12px;border-radius:10px;margin-bottom:10px}
@@ -28,11 +32,11 @@ h2{color:#0077b6;margin-top:0}
 <div class="container">
 
 <div class="card perfil">
-<img src="mi-foto.jpg" alt="Alba Rafaela Navarro" style="width:160px; height:160px; border-radius:50%; object-fit:cover; border:4px solid white; display:block; margin:10px auto;">
+<img src="https://via.placeholder.com/150" alt="Alba Rafaela Navarro">
 <h2>Hola, soy Alba Rafaela Navarro</h2>
 <p>Te acompaño a controlar tu diabetes con amor, fe y buena comida. ¡Tú puedes!</p>
-<a class="whatsapp" href="https://wa.me/18298684410?text=Hola%20Alba,%20quiero%20aprender%20a%20cuidar%20mi%20diabetes">💬 Escríbeme por WhatsApp</a>
-<p style="font-size:13px">
+<a class="whatsapp" href="https://wa.me/1829-868-4410?text=Hola%20Alba,%20quiero%20aprender%20a%20cuidar%20mi%20diabetes">💬 Escríbeme por WhatsApp</a>
+<p style="font-size:13px">Cambia el número 1829-868-4410 por tu número real en el código.</p>
 </div>
 
 <div class="card">
@@ -68,43 +72,12 @@ h2{color:#0077b6;margin-top:0}
 <div class="card" style="text-align:center">
 <h2>¿Necesitas ayuda?</h2>
 <p>Si tu azúcar está muy alta o te sientes mal, ve a tu médico. Esta página es para ayudarte, no para reemplazar tu doctor.</p>
-<a class="whatsapp" href="https://wa.me/18298684410">💬 Hablar con Alba por WhatsApp</a>
+<a class="whatsapp" href="https://wa.me/18090000000">💬 Hablar con Alba por WhatsApp</a>
 </div>
 
 </div>
 <script>
 function guardar(){
-  let vasos = 0;
-function tomarAgua(){
-vasos++;
-document.getElementById('vasos').innerText = vasos;
-let nube = document.getElementById('nube');
-let msg = document.getElementById('mensajeAgua');
-if(vasos < 4){ nube.innerText = '☁️🙂'; msg.innerText = '¡Muy bien! Sigue, vas bonito 💙'; }
-else if(vasos < 8){ nube.innerText = '☁️😄'; msg.innerText = '¡Wao! Ya casi llegas!'; }
-else { nube.innerText = '☁️🥳'; msg.innerText = '¡LO LOGRASTE! 8 vasos 💙'; }
-}
-function empezarRespiracion(){
-let texto = document.getElementById('respiraTexto');
-let cuenta = document.getElementById('respiraCuenta');
-let pasos = [
-['🌬️ RESPIRA... Inhala por la nariz', '4'],
-['✋ AGUANTA... Mantén el aire', '4'],
-['😮‍💨 SUELTA... Bota despacio por la boca', '6']
-];
-let i = 0;
-function siguiente(){
-if(i >= 3){ texto.innerText = '¡Listo! ¿Te sientes más tranquila? 💙'; cuenta.innerText = '😌'; return; }
-texto.innerText = pasos[i][0];
-let n = parseInt(pasos[i][1]);
-cuenta.innerText = n;
-let intervalo = setInterval(function(){
-n--;
-if(n > 0){ cuenta.innerText = n; } else { clearInterval(intervalo); i++; siguiente(); }
-}, 1000);
-}
-siguiente();
-}
 let g=document.getElementById('glucosa').value;
 let m=document.getElementById('momento').value;
 let n=document.getElementById('nota').value;

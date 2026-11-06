@@ -118,57 +118,5 @@ document.getElementById('nota').value='';
 alert('¡Guardado! Sigue así, tú puedes 💙');
 }
 </script>
-  <!-- NUBECITA DEL AGUA CON SONIDO -->
-<div style="text-align:center; background:#e0f2fe; border-radius:20px; padding:20px; margin:20px auto; max-width:350px;">
-  <div id="nube" style="font-size:70px;">☁️</div>
-  <p id="fraseNube" style="font-size:18px; font-weight:bold; color:#0369a1;">¡Hola mi amor! ¿Ya tomaste tu vasito de agua? 💧</p>
-  <p>Hoy llevas: <span id="vasos" style="font-size:22px; font-weight:bold;">0</span> vasitos 💧</p>
-  <button onclick="tomarAgua()" style="background:#0284c7; color:white; border:none; padding:12px 20px; border-radius:20px; font-size:16px; cursor:pointer;">
-    ¡Ya tomé agua! 💧
-  </button>
-  <br><br>
-  <button onclick="activarSonido()" style="background:white; border:1px solid #0284c7; color:#0284c7; padding:6px 12px; border-radius:20px; font-size:13px; cursor:pointer;">
-    🔊 Activar sonidito
-  </button>
-</div>
-
-<script>
-let vasos = 0;
-let sonidoOn = false;
-let frases = [
-  "¡Muy bien! Tu cuerpo está feliz 💙",
-  "¡Vas súper bien! Sigue así 💧",
-  "¡Esa es mi campeona! Otro vasito 💪",
-  "¡Qué orgullo! Tu azúcar te lo agradece ✨",
-  "¡Ya casi llegas a la meta! ☁️💧"
-];
-
-function activarSonido(){
-  sonidoOn = true;
-  alert("¡Sonidito activado! Ahora dale a ¡Ya tomé agua!");
-}
-
-function tomarAgua(){
-  vasos++;
-  document.getElementById("vasos").innerText = vasos;
-  document.getElementById("fraseNube").innerText = frases[vasos % frases.length];
-  document.getElementById("nube").innerText = "🌧️💧";
-  setTimeout(()=>{ document.getElementById("nube").innerText = "☁️"; }, 800);
-
-  if(sonidoOn){
-    // Sonidito de gotita sin necesidad de archivo
-    let ctx = new (window.AudioContext || window.webkitAudioContext)();
-    let o = ctx.createOscillator();
-    let g = ctx.createGain();
-    o.connect(g); g.connect(ctx.destination);
-    o.frequency.setValueAtTime(800, ctx.currentTime);
-    o.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.25);
-    g.gain.setValueAtTime(0.2, ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
-    o.start(); o.stop(ctx.currentTime + 0.3);
-  }
-}
-</script>
-<!-- FIN NUBECITA -->
 </body>
 </html>

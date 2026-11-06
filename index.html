@@ -78,6 +78,37 @@ h2{color:#0077b6;margin-top:0}
 </div>
 <script>
 function guardar(){
+  let vasos = 0;
+function tomarAgua(){
+vasos++;
+document.getElementById('vasos').innerText = vasos;
+let nube = document.getElementById('nube');
+let msg = document.getElementById('mensajeAgua');
+if(vasos < 4){ nube.innerText = '☁️🙂'; msg.innerText = '¡Muy bien! Sigue, vas bonito 💙'; }
+else if(vasos < 8){ nube.innerText = '☁️😄'; msg.innerText = '¡Wao! Ya casi llegas!'; }
+else { nube.innerText = '☁️🥳'; msg.innerText = '¡LO LOGRASTE! 8 vasos 💙'; }
+}
+function empezarRespiracion(){
+let texto = document.getElementById('respiraTexto');
+let cuenta = document.getElementById('respiraCuenta');
+let pasos = [
+['🌬️ RESPIRA... Inhala por la nariz', '4'],
+['✋ AGUANTA... Mantén el aire', '4'],
+['😮‍💨 SUELTA... Bota despacio por la boca', '6']
+];
+let i = 0;
+function siguiente(){
+if(i >= 3){ texto.innerText = '¡Listo! ¿Te sientes más tranquila? 💙'; cuenta.innerText = '😌'; return; }
+texto.innerText = pasos[i][0];
+let n = parseInt(pasos[i][1]);
+cuenta.innerText = n;
+let intervalo = setInterval(function(){
+n--;
+if(n > 0){ cuenta.innerText = n; } else { clearInterval(intervalo); i++; siguiente(); }
+}, 1000);
+}
+siguiente();
+}
 let g=document.getElementById('glucosa').value;
 let m=document.getElementById('momento').value;
 let n=document.getElementById('nota').value;
